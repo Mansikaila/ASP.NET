@@ -10,10 +10,10 @@ include './includes/connection.php';
 <style>
             
 .img-prod img {
-    height: 200px; / Set the desired height /
-    width: 100%;   / Make it fit the container width /
-    object-fit: cover; / Ensures the image covers the area while maintaining aspect ratio /
-    border-radius: 5px; / Optional: Adds rounded corners /
+    height: 200px; 
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
 }
 </style>
 <section id="home-section" class="hero">
@@ -117,13 +117,13 @@ include './includes/connection.php';
                 FROM brand, product 
                 WHERE brand.id = product.brand_id 
                 ORDER BY product.id DESC 
-                LIMIT 8"; // Fetch the 8 most recent products
-            if (isset($_GET['catId'])) {
+                LIMIT 8";
+            if (isset($_POST['catId'])) {
                 $sql = "SELECT brand.name as bname, product.id, product.name, product.price, product.pro_img 
                 FROM brand, product 
-                WHERE brand.id = product.brand_id AND product.cat_id = " . $_GET['catId'] . " 
+                WHERE brand.id = product.brand_id AND product.cat_id = " . $_POST['catId'] . " 
                 ORDER BY product.id DESC 
-                LIMIT 8"; // Adjust to category and fetch the most recent 8 products
+                LIMIT 8"; 
             }
 			$result = $con->query($sql);
 			if ($result->num_rows > 0) {
